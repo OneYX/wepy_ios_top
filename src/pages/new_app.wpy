@@ -1,0 +1,32 @@
+<style lang="less">
+</style>
+
+<template>
+  <view>
+    <common-list :listData.sync="{{ listData }}"></common-list>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import { getStore, connect } from 'wepy-redux'
+import { requestNewApp } from '../store/actions'
+import baseMixin from '../mixins/baseMixin'
+import CommonList from '../components/common-list'
+const store = getStore()
+
+@connect({
+  listData: state => state.base.newAppList,
+  country: state => state.base.country,
+  countryTitle: state => state.base.countryTitle
+})
+export default class Index extends wepy.page {
+  components = {
+    'common-list': CommonList
+  }
+  mixins = [baseMixin]
+  requestData() {
+    store.dispatch(requestNewApp(store.getState().base.country))
+  }
+}
+</script>
