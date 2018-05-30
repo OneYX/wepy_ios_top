@@ -1,91 +1,90 @@
 <style lang="less">
-  @brand-color: #fff;
-  .wrap {
-    position: relative;
-    z-index: 1;
-    margin: 24px;
-    background-color: @brand-color;
-    border-radius: 8px;
+@brand-color: #fff;
+.wrap {
+  position: relative;
+  z-index: 1;
+  margin: 24px;
+  background-color: @brand-color;
+  border-radius: 8px;
+}
+.isx {
+  padding-top: 32px !important;
+}
+.list-item {
+  display: flex;
+  flex-direction: row;
+  margin: 24px 0px 16px 0px;
+  font-size: 14px;
+  &__image {
+    width: 64px;
+    height: 64px;
   }
-  .isx {
-    padding-top: 32px !important;
+  &__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 22%;
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
   }
-  .list-item {
-    display: flex;
-    flex-direction: row;
-    margin: 24px 0px 16px 0px;
-    font-size: 14px;
-    &__image {
-      width: 64px;
-      height: 64px;
-    }
-    &__icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 22%;
-      border: .5px solid rgba(0, 0, 0, .1);
-    }
-    &__order {
-      margin-left: 12px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &__text {
-      margin-left: 12px;
-      margin-right: 12px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-    }
-    &__title {
-      display: flex;
-      font-size: 16px;
-      padding-right: 12px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    &__sub-title {
-      font-size: 14px;
-      color: darkgrey;
-    }
-  }
-  .big_title {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  .small_back {
+  &__order {
+    margin-left: 12px;
     font-size: 16px;
     font-weight: bold;
-    margin-top: 12px;
   }
-  .small_country {
+  &__text {
+    margin-left: 12px;
+    margin-right: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__title {
+    display: flex;
+    font-size: 16px;
+    padding-right: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__sub-title {
     font-size: 14px;
     color: darkgrey;
-    margin-left: 8px;
-    display: inline-block;
   }
-  .go_back_icon {
-    width: 32px;
-    height: 32px;
-    margin-top: 8px;
-  }
-  .f-col{
-    display: flex;
-    flex-direction: column;
-  }
-  .f-row{
-    display: flex;
-    flex-direction: row;
-  }
+}
+.big_title {
+  font-size: 36px;
+  font-weight: bold;
+}
+.small_back {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+.small_country {
+  font-size: 14px;
+  color: darkgrey;
+  margin-left: 8px;
+  display: inline-block;
+}
+.go_back_icon {
+  width: 32px;
+  height: 32px;
+  margin-top: 8px;
+}
+.f-col {
+  display: flex;
+  flex-direction: column;
+}
+.f-row {
+  display: flex;
+  flex-direction: row;
+}
 </style>
 
 <script>
 import wepy from 'wepy'
 import 'wepy-async-function'
 import { requestIntercept } from './common/util'
-import { REQUEST_API_TOP_FREE } from './store/types/base'
+// import { REQUEST_API_TOP_FREE } from './store/types/base'
 
 import { setStore } from 'wepy-redux'
 import configStore from './store'
@@ -115,32 +114,38 @@ export default class extends wepy.app {
       selectedColor: '#1296db',
       borderStyle: 'white',
       backgroundColor: '#F7F7F7',
-      list: [{
-        pagePath: 'pages/new_app',
-        text: '新鲜App',
-        iconPath: 'images/app_normal.png',
-        selectedIconPath: 'images/app_selected.png'
-      }, {
-        pagePath: 'pages/new_game',
-        text: '本周新游',
-        iconPath: 'images/games_normal.png',
-        selectedIconPath: 'images/games_selected.png'
-      }, {
-        pagePath: 'pages/index',
-        text: '免费排行',
-        iconPath: 'images/apps_normal.png',
-        selectedIconPath: 'images/apps_selected.png'
-      }, {
-        pagePath: 'pages/seller_top',
-        text: '畅销排行',
-        iconPath: 'images/hot_normal.png',
-        selectedIconPath: 'images/hot_selected.png'
-      }, {
-        pagePath: 'pages/paid_top',
-        text: '付费排行',
-        iconPath: 'images/seller_normal.png',
-        selectedIconPath: 'images/seller_selected.png'
-      }]
+      list: [
+        {
+          pagePath: 'pages/new_app',
+          text: '新鲜App',
+          iconPath: 'images/app_normal.png',
+          selectedIconPath: 'images/app_selected.png'
+        },
+        {
+          pagePath: 'pages/new_game',
+          text: '本周新游',
+          iconPath: 'images/games_normal.png',
+          selectedIconPath: 'images/games_selected.png'
+        },
+        {
+          pagePath: 'pages/index',
+          text: '免费排行',
+          iconPath: 'images/apps_normal.png',
+          selectedIconPath: 'images/apps_selected.png'
+        },
+        {
+          pagePath: 'pages/seller_top',
+          text: '畅销排行',
+          iconPath: 'images/hot_normal.png',
+          selectedIconPath: 'images/hot_selected.png'
+        },
+        {
+          pagePath: 'pages/paid_top',
+          text: '付费排行',
+          iconPath: 'images/seller_normal.png',
+          selectedIconPath: 'images/seller_selected.png'
+        }
+      ]
     }
   }
 
@@ -148,7 +153,7 @@ export default class extends wepy.app {
     userInfo: null
   }
 
-  constructor () {
+  constructor() {
     super()
     this.use('promisify')
     this.use('requestfix')
@@ -156,13 +161,13 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
-    this.loadCache(REQUEST_API_TOP_FREE)
+    // this.loadCache(REQUEST_API_TOP_FREE)
   }
 
   loadCache(key) {
     let data = wepy.getStorageSync(key)
     if (data) {
-      store.dispatch({type: key, payload: data})
+      store.dispatch({ type: key, payload: data })
     }
   }
 
@@ -172,7 +177,7 @@ export default class extends wepy.app {
       return this.globalData.userInfo
     }
     wepy.getUserInfo({
-      success (res) {
+      success(res) {
         that.globalData.userInfo = res.userInfo
         cb && cb(res.userInfo)
       }
